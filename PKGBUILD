@@ -5,7 +5,7 @@ pkgbase=mingw-w64-${_realname}
 pkgname=("${MINGW_PACKAGE_PREFIX}-${_realname}")
 pkgver=1.77.0
 pkgrel=1
-pkgdesc="C++11 metaprogramming library"
+pkgdesc="C++11 metaprogramming library (contains only cmake file)"
 arch=('any')
 mingw_arch=('mingw32' 'mingw64' 'ucrt64' 'clang64' 'clang32')
 url="https://github.com/boostorg/mp11"
@@ -36,4 +36,5 @@ package() {
   ${MINGW_PREFIX}/bin/cmake.exe \
     --build "${srcdir}/build-shared-${MINGW_CHOST}" \
     --target install
+  rm -rfv "${pkgdir}/${MINGW_PREFIX}/include"
 }
